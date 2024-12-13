@@ -14,7 +14,9 @@ def register(request):
     if request.method == 'POST':
         form = PatientForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.save()  # Save the instance first
+            form.save_m2m()  # Save many-to-many fields
             messages.success(request, "Your form has been submitted successfully!")
             return redirect('register')
     else:
