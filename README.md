@@ -1,1 +1,1 @@
-# ECG
+# Team Electro Cardio
